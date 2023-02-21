@@ -1,36 +1,18 @@
-# MLops-Proyect  
-
-### Sistema de recomendación
-
-  
- <p align="center">  
-
-<img src=https://www.enter.co/wp-content/uploads/2022/04/Plex-768x432.jpg> 
-
-  
-</p>  
-
-  
-
-    
 
   ## Descripción de la problematica a resolver.  
 
   
 
-Modelo de Recomendación para Servicios de Agregación de Plataformas de Streaming  
+Modelo de recomendaicón para usarios de plataformas de streaming. 
 
 En este proyecto se desarrollará un modelo de recomendación de películas y series para una startup que provee servicios de agregación de plataformas de streaming.   
 
-El objetivo es crear un sistema de recomendación que ayude a los usuarios a descubrir nuevos contenidos que puedan interesarles.  
+El objetivo es crear un interfase que ayude a los usuarios a descubrir nuevos contenidos que puedan interesarles.  
 
-Contexto    
+    
+#Transformaciones de los datos solicitadas
 
-El modelo de recomendación ya ha sido entrenado y ha arrojado buenas métricas, pero ahora es necesario llevarlo al mundo real. El ciclo de vida de un proyecto de Machine Learning debe contemplar desde la recolección y tratamiento de los datos hasta el entrenamiento y mantenimiento del modelo. En este caso, el rol a desarrollar es el de Data Scientist, encargado de transformar los datos y desarrollar una API que permita consultarlos.  
-
-Propuesta de Trabajo  
-
-Transformaciones de los Datos  
+Las transformacione se realizaron dentro de un notebook de colab llamado "Mlops_ETL.ipynb" donde se cargaron los dataset otorgados para el trabajo (4 de plataformas)(8 de ratings)
 
 Para el desarrollo del MVP, se requiere rapidez y eficiencia en las transformaciones de los datos. Se realizarán las siguientes transformaciones:  
 
@@ -44,6 +26,8 @@ Convertir los campos de texto a minúsculas.
 
 Convertir el campo duration en dos campos: duration_int y duration_type. El primero será un integer y el segundo un string indicando la unidad de medición de duración: min (minutos) o season (temporadas).  
 
+Luego de obtenido todos los cambios solicitados se crea un dataframe llamado "df_servicios_final.csv" sobre el cual trabajaremos el archivo que nos permitira generar las consultas de la Api
+
 Desarrollo de la API  
 
 Se propone disponibilizar los datos de la empresa mediante una API desarrollada con el framework FastAPI. Las consultas que se pueden realizar son las siguientes:  
@@ -56,18 +40,30 @@ Cantidad de películas por plataforma con filtro de PLATAFORMA. (La función deb
 
 Actor que más se repite según plataforma y año. (La función debe llamarse get_actor(platform, year)).  
 
+Antes de hacer el deploy en Deta una prueba en entorno virtual usando uvicorn para comprobar su funcionamiento.
+
 Deployment  
 
 Se utilizará la plataforma Deta para realizar el deployment de la aplicación, ya que no requiere dockerización y ha sido utilizado con éxito por los compañeros cercanos.    
 
 Análisis Exploratorio de los Datos (EDA)  
 
-Una vez que los datos han sido limpiados, se realizará un análisis exploratorio de los mismos para investigar las relaciones entre las variables, detectar outliers o anomalías y encontrar patrones interesantes. Se utilizo la librería dataprep  para realizar el análisis y obtener conclusiones relevantes, luego se generaron varios filtros dentro del daset para ver las tendecias de los usarios a mirar determinados contenidos   
+Una vez con los datos han sido limpiados, se realiza un análisis exploratorio de los mismos para investigar las relaciones entre las variables, detectar outliers o anomalías y encontrar patrones interesantes.Todo este proceso es realizado dentro de un notebok de colab llamado? MLops_EDA" que utiliza para tomar los datos el data set de nombre "df_unico.parquet", se utilizo la  librería dataprep  para realizar inside primario y obtener conclusiones relevantes, luego se generaron varios filtros dentro del daset para ver las tendecias de los usarios a mirar determinados contenidos.
+Algunos datos relevantes:
+
+Con 80.0% del porcentaje acumulado de usuarios, se tienen 30406 valores únicos que representan el 26.85% de todos los valores únicos de titulos disponibles.
+La película mas vista "married at first sight", ha sido vista 302 veces.
+la pelicula con mayor score "eddie izzard: force majeure:, con un score  3.81.
   
 
 Sistema de Recomendación  
 
-Una vez que la API está lista y los datos han sido analizados el quido de data procederá al entrenamiento del modelo de machine learning para crear un sistema de recomendación de películas y series.   
+Una vez que la API está lista y los datos han sido analizados se procede al entrenamiento del modelo de machine learning para crear un sistema de recomendación de películas y series. 
+
+El modelo elegido para realizarlo es el SVD que pertenece a la libreria surprise.
+
+Luego de creado se genera un arhivo ".sav"(el enlace al archivo se encuentra en los links debajo) para alojarlo en https://huggingface.co/, se creo un repositorio para hacer una interfaz con la librería gradio.
+
 
 El objetivo fue crear un sistema que dado un id de usuario y una película se la recomiende o no.  
 
@@ -80,9 +76,12 @@ El objetivo fue crear un sistema que dado un id de usuario y una película se la
 
   #Link a la api de consultas  
 
-  `<link>` : <https://consultas-1-m0391132.deta.app/docs#/>  
-
+  `<link>` : <https://consultas-1-m0391132.deta.app/docs#/>
+  
+  #Link al archivo que contiene el modelo entrenado
+  
+  `<link>` https://drive.google.com/file/d/1sXzl7sxAkaFxJzHJ7XY7TQniykS0lZDY/view?usp=share_link
+  
   #Link al sistema de recomendación  
 
  `<link>` : <https://huggingface.co/spaces/Rolajim/proyecto> 
-
