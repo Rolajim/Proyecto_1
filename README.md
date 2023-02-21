@@ -18,7 +18,7 @@
 
   
 
-Modelo de recomendaicón para usarios de plataformas de streaming. 
+Modelo de recomedación para usarios de plataformas de streaming. 
 
 En este proyecto se desarrollará un modelo de recomendación de películas y series para una startup que provee servicios de agregación de plataformas de streaming.   
 
