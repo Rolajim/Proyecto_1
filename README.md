@@ -41,9 +41,9 @@ Convertir los campos de texto a minúsculas.
 
 Convertir el campo duration en dos campos: duration_int y duration_type. El primero será un integer y el segundo un string indicando la unidad de medición de duración: min (minutos) o season (temporadas).  
 
-Luego de obtenido todos los cambios solicitados se crea un dataframe llamado "df_servicios_final.csv" sobre el cual trabajaremos el archivo que nos permitira generar las consultas de la Api
+Luego de obtenido todos los cambios solicitados se crea un dataframe llamado **"df_servicios_final.csv"** sobre el cual trabajaremos el archivo que nos permita generar las consultas de la Api
 
-Desarrollo de la API  
+### Desarrollo de la API  
 
 Las funciones de consultas se encuentran en el archivo **"main.py"** el que fue relizado en visual studio code.
 
@@ -62,21 +62,24 @@ Antes de hacer el deploy en Deta una prueba en entorno virtual usando uvicorn pa
 ### Deployment  
 
 Se utilizó la plataforma Deta para realizar el deployment de la aplicación, ya que no requiere dockerización.
-Análisis Exploratorio de los Datos (EDA)  
 
-Una vez con los datos han sido limpiados, se realiza un análisis exploratorio de los mismos para investigar las relaciones entre las variables, detectar outliers o anomalías y encontrar patrones interesantes.Todo este proceso es realizado dentro de un notebok de colab llamado  **"MLops_EDA.ipynb"** que utiliza para tomar los datos el data set de nombre "df_unico.parquet", se utilizo la  librería dataprep  para realizar inside primario y obtener conclusiones relevantes, luego se generaron varios filtros dentro del daset para ver las tendecias de los usarios a mirar determinados contenidos.
+### Análisis Exploratorio de los Datos (EDA)  
+
+Una vez que los datos han sido limpiados, se realiza un análisis exploratorio de los mismos para investigar las relaciones entre las variables, detectar outliers o anomalías y encontrar patrones interesantes.Todo este proceso es realizado dentro de un notebok de google colab llamado  **"MLops_EDA.ipynb"** que utiliza para tomar los datos el data set de nombre "df_unico.parquet", se utilizó la  librería dataprep  para realizar un inside primario y obtener conclusiones relevantes, luego se generaron varios filtros dentro del dataset para ver las tendecias de los usuarios a mirar determinados contenidos.
 Algunos datos relevantes:
 
-Con 80.0% del porcentaje acumulado de usuarios, se tienen 30406 valores únicos que representan el 26.85% de todos los valores únicos de titulos disponibles.
+Con 80 % del porcentaje acumulado de usuarios, se tienen 30406 valores únicos que representan el 26.85% de todos los valores únicos de titulos disponibles.
+
 La película mas vista "married at first sight", ha sido vista 302 veces.
-la pelicula con mayor score "eddie izzard: force majeure:, con un score  3.81.
+
+La pelicula con mayor puntuación "eddie izzard: force majeure", con un score  3.81.
   
 
 ### Sistema de Recomendación  
 
 Una vez que la API está lista y los datos han sido analizados se procede al entrenamiento del modelo de machine learning para crear un sistema de recomendación de películas y series. 
 
-El notebook que contiene toda el códgo se llama **"MLops_Machine_Earning.ipynb"**, el modelo elegido para realizarlo es el SVD que pertenece a la libreria surprise 
+El notebook  realizado en google colab que contiene toda el códgo se llama **"MLops_Machine_Earning.ipynb"**, el modelo elegido para realizarlo es el SVD que pertenece a la libreria surprise. 
 
 Luego de creado se genera un arhivo ".sav"(el enlace al archivo se encuentra en los links debajo) para alojarlo en https://huggingface.co/, se creo un repositorio para hacer una interfaz para el usuario con la librería gradio.
 
